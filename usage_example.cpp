@@ -26,7 +26,10 @@
 // For more information, please refer to < https://unlicense.org>
 
 
+// Include layout
 #include "JL_ReadWrite_Layout.h"
+
+// use layout without namespace calls all the time
 using JL::rw::Layout;
 
 #include <set>
@@ -104,11 +107,13 @@ int main()
 		std::ofstream file{ "file.bin", std::ios::out | std::ios::binary };
 
 		// Write a previously defined layout
-		if (MyLayout::Write(file, names, heights, measurements))
+		auto result = MyLayout::Write(file, names, heights, measurements);
+		if (failed(result))
 			return -1;
 
 		// Or define one on the spot
-		if (Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int>::Write(file, weird1, weird2, weird3, "Some string, idk", 1009))
+		auto result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int>::Write(file, weird1, weird2, weird3, "Some string, idk", 1009);
+		if (failed(result))
 			return -1;
 	}
 
@@ -119,17 +124,21 @@ int main()
 
 		std::ifstream file{ "file.bin", std::ios::in | std::ios::binary };
 
-		if (MyLayout::Read(file, names, heights, measurements))
+		auto result = MyLayout::Read(file, names, heights, measurements);
+		if (failed(result))
 			return -1;
 
 		std::string str{};
 		int i{};
 
-		if (Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int> ::Read(file, weird1, weird2, weird3, str, i))
+		auto result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int> ::Read(file, weird1, weird2, weird3, str, i);
+		if (failed(result))
 			return -1;
 
 	}
 
+
+	// Example that uses use std::set with std::string
 
 	{
 		std::set<std::string> names{ "Ann", "Joseph", "Catherine" };

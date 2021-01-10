@@ -66,6 +66,8 @@ private:
 
 int main()
 {
+	// use failed without namespace
+	using JL::rw::failed;
 
 	// loose objects
 	std::vector<std::string> names{ "ann", "joseph", "catherine" };
@@ -74,7 +76,7 @@ int main()
 
 	// some of our weird class objects
 	WeirdObject weird1{}, weird2{}, weird3{};
-	
+
 	{
 		// File stream
 		std::ofstream file{ "file.bin", std::ios::out | std::ios::binary };

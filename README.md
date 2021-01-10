@@ -1,4 +1,5 @@
-# LibJL: Binary reader and writer
+# LibJL
+## Binary reader and writer
 
 An easy to use library to write to and read from a binary file.
 

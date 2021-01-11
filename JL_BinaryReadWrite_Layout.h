@@ -23,7 +23,7 @@
 
 #pragma once
 
-#include "JL_ReadWrite_Impl.h"
+#include "JL_BinaryReadWrite_Impl.h"
 
 namespace JL::rw
 {
@@ -33,12 +33,14 @@ namespace JL::rw
 	{
 		using Result = rw::Result;
 
-		static Result Read(std::ifstream& is, Objects & ... objects)
+		template <typename Stream> 
+		static Result Read(Stream& is, Objects & ... objects)
 		{
 			return (failed(read(is, objects)) || ...);
 		}
 
-		static Result Write(std::ofstream& os, Objects const& ... objects)
+		template <typename Stream>
+		static Result Write(Stream& os, Objects const& ... objects)
 		{
 			return (failed(write(os, objects)) || ...);
 		}

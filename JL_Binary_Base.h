@@ -1,4 +1,4 @@
-// BinaryReadWrite_Base.h - Base declarations
+// Binary base - JL template library, binary reading and writing
 
 /*
    Copyright (C) 2021 Kobe Vrijsen

@@ -1,7 +1,7 @@
-// BinaryReadWrite_Impl - read/write implementations
+// Binary Implemenation - JL template library, binary reading and writing
 
 /*
-   Copyright (C) 2021 Kobe Vrijsen
+   Copyright (C) 2021 KoneLinx
 
    this file is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public

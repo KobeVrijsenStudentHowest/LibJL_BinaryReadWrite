@@ -1,9 +1,9 @@
 
 // Include layout
-#include "JL_ReadWrite_Layout.h"
+#include "JL_Binary.h"
 
 // use layout without namespace calls all the time
-using JL::rw::Layout;
+using JL::binary::Layout;
 
 #include <set>
 
@@ -67,7 +67,7 @@ private:
 int main()
 {
 	// use failed without namespace
-	using JL::rw::failed;
+	using JL::binary::failed;
 
 	// loose objects
 	std::vector<std::string> names{ "ann", "joseph", "catherine" };
@@ -87,7 +87,7 @@ int main()
 			return -1;
 
 		// Or define one on the spot
-		auto result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int>::Write(file, weird1, weird2, weird3, "Some string, idk", 1009);
+		result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int>::Write(file, weird1, weird2, weird3, "Some string, idk", 1009);
 		if (failed(result))
 			return -1;
 	}
@@ -106,7 +106,7 @@ int main()
 		std::string str{};
 		int i{};
 
-		auto result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int> ::Read(file, weird1, weird2, weird3, str, i);
+		result = Layout<WeirdObject, WeirdObject, WeirdObject, std::string, int> ::Read(file, weird1, weird2, weird3, str, i);
 		if (failed(result))
 			return -1;
 
